@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="logged-in-box auth0-box logged-in">
+    <h1 id="logo"><img src="https://cdn.auth0.com/website/press/resources/guardian-logo.svg" /></h1>
+
+    <h1>Librería Científica del Departamento de Ciencia de la Computación</h1>
+    <div id="avatar">
+        <img src="{{ auth0User.extra_data.picture }}"/>
+    </div>
+
+    <h4>Bienvenido {{ user.username }}</h4>
+    <!--<pre>{{ userdata }}</pre>-->
+    <a class="btn btn-primary btn-lg btn-logout" href="/logout">Salir</a>
+
+</div>
+
+{% endblock content %}
