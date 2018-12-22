@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'library.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'librarycs',
+        'HOST': 'mongodb+srv://csunsa-wdj6g.mongodb.net',
+        'USER': os.environ.get('USER_MONGO'),
+        'PASSWORD': os.environ.get('PASS_MONGO'),
+        'REPLICASET' : "CSUNSA-shard-0"
     }
 }
 

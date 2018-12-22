@@ -20,6 +20,7 @@ class Auth0(BaseOAuth2):
 
     def get_user_id(self, details, response):
         """Return current user id."""
+        print(details)
         return details['user_id']
 
     def get_user_details(self, response):
@@ -33,4 +34,4 @@ class Auth0(BaseOAuth2):
         return {'username': payload['nickname'],
                 'first_name': payload['name'],
                 'picture': payload['picture'],
-'user_id': payload['sub']}
+'user_id': payload['sub'], 'role': payload["https://roles"]}
