@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="logged-in-box auth0-box logged-in">
+    <h1 id="logo"><img src="https://cdn.auth0.com/website/press/resources/guardian-logo.svg"/></h1>
+
+    <h1>Librería Científica del Departamento de Ciencia de la Computación</h1>
+    <a class="btn btn-primary btn-lg btn-logout" href="/dashboard">Volver</a>
+
+    <div class="container" id="mini">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}<br>
+            <input type="submit" value="Modificar">
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}

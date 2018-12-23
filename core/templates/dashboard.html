@@ -5,11 +5,27 @@
     <h1 id="logo"><img src="https://cdn.auth0.com/website/press/resources/guardian-logo.svg" /></h1>
 
     <h1>Librería Científica del Departamento de Ciencia de la Computación</h1>
-    <h4>Bienvenido {{ user.username }}</h4>
+    <h4>Bienvenido <b>{{ auth0User.extra_data.role }}</b>, {{ user.username }}</h4>
     <div id="avatar">
         <img src="{{ auth0User.extra_data.picture }}"/>
     </div>
     <a class="btn btn-primary btn-lg btn-logout" href="/logout">Salir</a>
+
+    <div class="container" id="mini">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Filtrar">
+
+        </form>
+
+    </div>
+
+    <p><h5>
+        {% if auth0User.extra_data.role == "admin" %}
+            <a href="/book/new">Agregar nuevo</a>
+        {% endif %}
+    </h5></p>
 
     <div class="container">
         <table>
@@ -26,7 +42,14 @@
                         <td> <div id="avatar"> <img src='{{ book.content.image }}'/> </div> </td>
                         <td>
                             {{ book.title }}
-                            ({{ book.content.year }})<br>
+                            ({{ book.content.year }})
+                            <h5>
+                            {% if auth0User.extra_data.role == "admin" %}
+                                <a href="/book/edit/{{ book.id }}">Editar</a>
+                                <a href="/book/delete/{{ book.id }}"
+                                    onclick="return confirm('¿Estás seguro que deseas eliminar este libro?')">Eliminar</a>
+                            {% endif %}
+                            </h5>
                             <h4>{% for author in  book.authors.all %}
                                 {{ author }}
                             {% endfor %}
