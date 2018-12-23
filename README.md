@@ -34,6 +34,7 @@ djongo -->> MongoDB Atlas: Petición No-SQL
 MongoDB Atlas-->>djongo: Data No-SQL
 djongo ->> Django 2: Data SQL
 ```
+![MongoDB communication](mongodb.svg)
 
 ### Auth0
 
@@ -44,6 +45,8 @@ Auth0 -->> Google | Email |face: Comprobación
 Google | Email |face-->> Auth0: Compr. Exitosa
 Auth0 ->> Django 2: tokens, roles, etc
 ```
+
+![Auth0 communication](auth0.svg)
 
 # License GLP v3
 
